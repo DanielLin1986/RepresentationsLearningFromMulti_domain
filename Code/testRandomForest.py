@@ -24,7 +24,7 @@ script_start_time = time.time()
 
 print ("Script starts at: " + str(script_start_time))
 
-working_dir = 'D:\\Phd\\Backup\\2018-10-16-TIFS\\libtiff\\Representations_SARD\\'
+working_dir = 'D:\\Path\\to\\your\\data\\'
 
 libtiff_train_repre_nist = np.loadtxt(open(working_dir + 'libtiff_train_nist_rep_128.csv', 'rb'), delimiter=',', dtype='float')
 libtiff_test_repre_nist= np.loadtxt(open(working_dir + 'libtiff_test_nist_rep_128.csv', 'rb'), delimiter=',', dtype='float')
@@ -119,18 +119,4 @@ if __name__ == '__main__':
 print ("\r\n")
 print ("--- %s seconds ---" + str(time.time() - script_start_time))
 
-"""
-[[497   9]
- [ 58  15]]
-
-               precision    recall  f1-score   support
-
-Non-defective       0.90      0.98      0.94       506
-    Defective       0.62      0.21      0.31        73
-
-    micro avg       0.88      0.88      0.88       579
-    macro avg       0.76      0.59      0.62       579
- weighted avg       0.86      0.88      0.86       579
-  
-"""
 np.savetxt(working_dir + 'result_sard_weighted_128.csv', y_predict_proba, delimiter=",")
