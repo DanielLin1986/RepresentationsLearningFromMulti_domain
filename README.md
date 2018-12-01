@@ -40,7 +40,7 @@ $ bash Anaconda3-5.3.1-Linux-x86_64.sh
 ```
  
 2. Hardware
- * An NVIDIA GPU with as least 4G video memory is required (Due to using CuDNNLSTM, training on a main-stream GPU had a 12x ~ 50x speedup compared with training on a server equipped with two high-end Intel Xeon CPUs with totally 48 logical cores on our data set). 
+ * An NVIDIA GPU with as least 4G video memory is required (Due to using CuDNNLSTM, training on a mainstream GPU had a 12x ~ 50x speedup compared with training on a server equipped with two high-end Intel Xeon CPUs with totally 48 logical cores on our data set). 
  
 3. Data preprocessing
  * The AST parser -- The AST of a source code function can be extracted using the tool called [CodeSensor](https://github.com/fabsx00/codesensor). In our paper, we used the old version which is codeSensor-0.2.jar. The parser does not require a build environment/supporting libraries for parsering the source code functions to ASTs. 
