@@ -4,7 +4,7 @@ Created on Thu Apr 12 13:20:36 2018
 
 @author: yuyu-
 
-Bi-LSTM model
+The Bi-LSTM model.
 
 """
 
@@ -22,7 +22,7 @@ learning_rate = 0.01
 decay_rate = learning_rate / EPOCHS
 #momentum = 0.8
 
-sgd = optimizers.SGD(lr=learning_rate, decay=decay_rate, clipvalue=0.49, nesterov=True)
+sgd = optimizers.SGD(lr=learning_rate, decay=decay_rate, nesterov=True)
 OPTIMIZER = sgd
 
 def BiLSTM_network(MAX_LEN, EMBEDDING_DIM, word_index, embedding_matrix, use_dropout=False):
@@ -48,8 +48,8 @@ def BiLSTM_network(MAX_LEN, EMBEDDING_DIM, word_index, embedding_matrix, use_dro
     else:
         dense_1 = Dense(64, activation='relu')(gmp_layer)
         
-    #dense_2 = Dense(32)(dense_1)
-    dense_3 = Dense(1, activation='sigmoid')(dense_1)
+    dense_2 = Dense(32)(dense_1)
+    dense_3 = Dense(1, activation='sigmoid')(dense_2)
     
     model = Model(inputs=inputs, outputs = dense_3, name='BiLSTM_network')
     #parallel_model = multi_gpu_model(model, gpus=2)
