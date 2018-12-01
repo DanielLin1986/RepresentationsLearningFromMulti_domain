@@ -345,9 +345,8 @@ if __name__ == '__main__':
     #best_model = load_model(working_dir + 'models//BiLSTM_baseline_attention_1_32_0.964_0.100730.h5', {'AttentionWithContext': AttentionWithContext})
     
     #probs, test_accuracy = test(test_set_x, test_set_y, best_model)
-    probs, test_accuracy = test(validation_set_x, validation_set_y, best_model)
-    
-    #printAttentionWords(test_set_x, test_set_y, best_model, word_index, 20)
+    #probs, test_accuracy = test(validation_set_x, validation_set_y, best_model)
+
     
     ListToCSV(probs.tolist(), working_dir + '//prob_nn_ffmpeg_validation.csv')
     ListToCSV(ffmpeg_test_label, working_dir + '//prob_nn_label.csv')
