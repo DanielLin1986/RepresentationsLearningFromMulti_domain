@@ -1,6 +1,6 @@
 # RepresentationsLearningFromMulti_domain
 
-Hi there, warmly welcome!
+Hi there, welcome!
 
 This page contains the code and data used in the paper [Software Vulnerability Discovery via Learning Multi-domain Knowledge Bases].
 
