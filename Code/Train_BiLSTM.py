@@ -4,6 +4,8 @@ Created on Thu Apr 12 15:18:51 2018
 
 @author: yuyu-
 
+Train a Bi-LSTM model.
+
 """
 
 import time
@@ -44,9 +46,7 @@ BATCH_SIZE = 16
 EPOCHS = 170
 PATIENCE = 65
 
-#working_dir = '/home/nsclab/Shared/Guanjun/Test_CWE_tokens/'
-working_dir = 'D:\\Phd\\Backup\\2018-08-30-AsiaCCS'
-#working_dir = "/home/nsclab/Shared/Guanjun/Attention/manual_attention" + os.sep
+working_dir = 'D:\\Path\\to\\your\\data\\'
 model_saved_path = working_dir + os.sep + 'models'
 log_path = working_dir + 'logs'
 
@@ -56,7 +56,7 @@ learning_rate = 0.01
 decay_rate = learning_rate / EPOCHS
 #momentum = 0.8
 
-sgd = optimizers.SGD(lr=learning_rate, decay=decay_rate, clipvalue=0.49)
+sgd = optimizers.SGD(lr=learning_rate, decay=decay_rate, nesterov=True)
 OPTIMIZER = sgd
 
 # 1. Load the data for training and validation
@@ -90,7 +90,7 @@ def removeSemicolon(input_list):
     
     return new_list
 
-# Further split the elements such as "const int *" into "const", "int" and "*"
+# Further split the elements further such as "const int *" into "const", "int" and "*"
 def ProcessList(list_to_process):
     token_list = []
     empty_index_list = []
@@ -111,15 +111,7 @@ def ListToCSV(list_to_csv, path):
     df = pd.DataFrame(list_to_csv)
     df.to_csv(path, index=False)
 
-#non_vul_list = LoadSavedData(working_dir + 'ffmpeg\\non_vul_list.pkl')
-#non_vul_list_id = LoadSavedData(working_dir + 'ffmpeg\\non_vul_list_id.pkl')
-#non_vul_list_label = LoadSavedData(working_dir + 'ffmpeg\\non_vul_list_label.pkl')
-#
-#vul_list = LoadSavedData(working_dir + 'ffmpeg\\vul_list.pkl')
-#vul_list_id = LoadSavedData(working_dir + 'ffmpeg\\vul_list_id.pkl')
-#vul_list_label = LoadSavedData(working_dir + 'ffmpeg\\vul_list_label.pkl')
-    
-# Use the other 5 projects as training set.    
+# When test on project FFmpeg, we use the other 5 projects as training set.    
 #------------------------------------------------------------#    
 libtiff_list = LoadSavedData(working_dir + '\\TII\\FFmpeg\\5-project-except-ffmpeg\\5-project-funcs\\libtiff_list.pkl')
 libtiff_list_id = LoadSavedData(working_dir + '\\TII\\FFmpeg\\5-project-except-ffmpeg\\5-project-funcs\\libtiff_list_id.pkl')
@@ -155,7 +147,7 @@ for item in empty_index_list:
     del total_list_id[item]
     del total_list_label[item]
 
-# Use the FFmpeg training set as the validation set.
+# We use FFmpeg as the test set.
 #------------------------------------------------------------#
 
 ffmpeg_train_list, ffmpeg_train_list_id = getCFilesFromText(working_dir + '\\TII\\FFmpeg\\5-project-except-ffmpeg\\train_func\\')
