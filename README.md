@@ -46,7 +46,4 @@ $ bash Anaconda3-5.3.1-Linux-x86_64.sh
  * The AST parser -- The AST of a source code function can be extracted using the tool called [CodeSensor](https://github.com/fabsx00/codesensor). In our paper, we used the old version which is codeSensor-0.2.jar. The parser does not require a build environment/supporting libraries for parsering the source code functions to ASTs. 
  * The obfuscation tool we used for obfuscating the SARD project samples is call [Snob](https://snob.soft112.com/). 
 
-4. Performance Tuning
-The implementation described in the paper provides only a general reference. We believe that the reported performance can be further improved by tuning the Bi-LSTM network and even the Random Forest (RF) algorithm. For instance, we can assign more weight to the minority class (the vulnerable class) for both the Bi-LSTM network and RF; we can introduce gradient cliping and regularizers to prevent overfitting and achieve better convergence.
-
 Thank you! 
