@@ -1,19 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #include "std_testcase.h"
 
 #include <winsock2.h>
@@ -67,19 +51,7 @@ void CWE15_External_Control_of_System_or_Configuration_Setting__w32_01_bad()
             if (acceptSocket == INVALID_SOCKET)
             {
                 break;
-            }
-            
-
-
-
-
-
-
-
-
-
-
-            
+            }           
             recvResult = recv(acceptSocket, data, 100 - 1, 0);
             if (recvResult == SOCKET_ERROR || recvResult == 0)
             {
@@ -135,12 +107,6 @@ void CWE15_External_Control_of_System_or_Configuration_Setting__w32_01_good()
 }
 
 #endif 
-
-
-
-
-
-
 
 #ifdef INCLUDEMAIN
 

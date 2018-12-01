@@ -1,19 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #include "std_testcase.h"
 
 #include <winsock2.h>
@@ -67,19 +51,7 @@ void C000086B7()
             if (C00000BBF == C000009F9)
             {
                 break;
-            }
-            
-
-
-
-
-
-
-
-
-
-
-            
+            }           
             C00000A05 = C00000A1A(C00000BBF, C00000A00, 100 - 1, 0);
             if (C00000A05 == C000009FA || C00000A05 == 0)
             {
@@ -135,12 +107,6 @@ void C000086BB()
 }
 
 #endif 
-
-
-
-
-
-
 
 #ifdef C00000A23
 
