@@ -4,7 +4,7 @@ Created on Wed Apr 11 11:32:26 2018
 
 @author: yuyu-
 
-Load C files as text. Sapaerate words so that there is space between two words.
+Load C files as text. Separate the token '*var', so that a space is added to '*' and 'var' to form two tokens.
 
 """
 import pickle
@@ -14,8 +14,6 @@ import os
 import matplotlib.pyplot as plt
 import pandas as pd
 #import plotly.plotly as py
-
-#working_dir = 'D:\\Phd\\Backup\\2018-08-30-AsiaCCS\\Test_Elmo\\Buffer_Errors_functions\\'
 
 #test_str = 'mian(int x) {int x= 1 +2}'
 
