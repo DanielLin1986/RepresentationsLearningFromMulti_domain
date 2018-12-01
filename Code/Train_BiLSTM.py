@@ -30,12 +30,7 @@ import keras.backend as K
 
 import matplotlib.pyplot as plt
 
-#from attention import AttentionWithContext
-
 from BiLSTM_model import BiLSTM_network
-#from BiLSTM_model import BiLSTM_network_with_attention
-from manual_token_list import construc_list
-#from utils import visualize_attention
 from LoadCFilesAsText import getCFilesFromText
 # -------------------------------------------------------
 # Parameters used
@@ -229,13 +224,7 @@ print (total_sequences_pad.shape)
 #-------------------------------------------------------------#
 # Use part of the ffmpeg training set as the actual training set, and the remaining set as the validation set.  
 
-ffmpeg_train_set_x, ffmpeg_validation_set_x, ffmpeg_train_set_y, ffmpeg_validation_set_y, ffmpeg_train_set_id, ffmpeg_validation_set_id = train_test_split(ffmpeg_train_sequence_pad, ffmpeg_train_label, ffmpeg_train_list_id, test_size=0.7, random_state=42)
-#
-#train_set_x, validation_set_x, train_set_y, validation_set_y, train_set_id, validation_set_id = train_test_split(train_set_x, train_set_y, train_set_id, test_size=0.3, random_state=42)
-
-train_set_x = total_sequences_pad.tolist()
-train_set_x = np.asarray(train_set_x)
-validation_set_x = ffmpeg_validation_set_x 
+train_set_x, validation_set_x, train_set_y, validation_set_y, train_set_id, validation_set_id = train_test_split(total_sequence_pad, total_list_label, total_list_id, test_size=0.7, random_state=42)
 
 print ("Training set: ")
 
@@ -244,9 +233,6 @@ print (train_set_x)
 print ("Validation set: ")
 
 print (validation_set_x)
-
-train_set_y = np.asarray(total_list_label)
-validation_set_y = np.asarray(ffmpeg_validation_set_y)
 
 print (len(train_set_x), len(train_set_y), len(total_list_id + ffmpeg_train_set_id), len(validation_set_y), len(ffmpeg_validation_set_id), len(validation_set_x))
 
