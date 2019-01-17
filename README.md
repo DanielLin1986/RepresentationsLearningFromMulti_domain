@@ -44,6 +44,6 @@ $ bash Anaconda3-5.3.1-Linux-x86_64.sh
  
 3. Data preprocessing
  * The AST parser -- The AST of a source code function can be extracted using the tool called [CodeSensor](https://github.com/fabsx00/codesensor). In our paper, we used the old version which is codeSensor-0.2.jar. The parser does not require a build environment/supporting libraries for parsering the source code functions to ASTs. 
- * The obfuscation tool we used for obfuscating the SARD project samples is call [Snob](https://snob.soft112.com/). 
+ * The obfuscation tool we used for obfuscating the SARD project samples is called [Snob](https://snob.soft112.com/). 
 
 Thank you! 
