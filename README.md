@@ -18,9 +18,13 @@ The "Code" folder contains the Python code for:
 3. Obtain representations -- ObtainRepresentations.py
 4. Use the representations as features for training and test -- testRandomForest.py
 
-The "Data" folder contains a small amount of data samples (more data will be shared when the paper is accepted.):
+The "Data" folder contains the data samples used in the paper to replicate and validate the findings:
+
+For a small test, you can use the following:
 1. The extracted serialized Abstract Syntax Tree (AST) sequence samples from project FFmpeg -- stored in the "The_CVE_samples" folder. 
 2. The source code of the SARD project test case and the obfuscated version -- stored in the "The_SARD_samples" folder.
+
+We also added vulnerable and non-vulnerable functions labeled and collected from 6 open source projects, which can be found in the Six_projects.zip file in the "Data" folder.
 
 ### Reproduction:
 
