@@ -33,12 +33,12 @@ def BiLSTM_network(MAX_LEN, EMBEDDING_DIM, word_index, embedding_matrix, use_dro
                                weights=[embedding_matrix],
                                input_length=MAX_LEN,
                                trainable=False)(inputs)
-    bilstm_1 = Bidirectional(CuDNNLSTM(64, return_sequences=True))(sharable_embedding)
+    bilstm_1 = Bidirectional(CuDNNLSTM(64, return_sequences=True), merge_mode='concat')(sharable_embedding)
     if use_dropout:
         droput_layer_1 = Dropout(0.5)(bilstm_1)
-        bilstm_2 = Bidirectional(CuDNNLSTM(64, return_sequences=True))(droput_layer_1)
+        bilstm_2 = Bidirectional(CuDNNLSTM(64, return_sequences=True), merge_mode='concat')(droput_layer_1)
     else:
-        bilstm_2 = Bidirectional(CuDNNLSTM(64, return_sequences=True))(bilstm_1)
+        bilstm_2 = Bidirectional(CuDNNLSTM(64, return_sequences=True), merge_mode='concat')(bilstm_1)
     
     gmp_layer = GlobalMaxPooling1D()(bilstm_2)
     
