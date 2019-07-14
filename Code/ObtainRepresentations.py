@@ -245,9 +245,9 @@ def ObtainRepresentations(input_sequences, layer_number, model):
 	representations = layered_model.predict(input_sequences)
 	return representations
 
-# There are 9 layers in total. So we use the third last layer
-ffmpeg_train_repre_nist = ObtainRepresentations(ffmpeg_train_sequences_pad, 6, model) 
-ffmpeg_test_repre_nist = ObtainRepresentations(ffmpeg_test_sequences_pad, 6, model) 
+# There are 9 layers in total. So we use the fourth last layer
+ffmpeg_train_repre_nist = ObtainRepresentations(ffmpeg_train_sequences_pad, 5, model) 
+ffmpeg_test_repre_nist = ObtainRepresentations(ffmpeg_test_sequences_pad, 5, model) 
 
 #non_vul_repre_nist = ObtainRepresentations(non_vul_sequences_pad, 8, model) 
 #vul_repre_nist = ObtainRepresentations(vul_sequences_pad, 8, model) 
