@@ -26,11 +26,11 @@ print ("Script starts at: " + str(script_start_time))
 
 working_dir = 'D:\\Path\\to\\your\\data\\'
 
-libtiff_train_repre_nist = np.loadtxt(open(working_dir + 'libtiff_train_nist_rep_128.csv', 'rb'), delimiter=',', dtype='float')
-libtiff_test_repre_nist= np.loadtxt(open(working_dir + 'libtiff_test_nist_rep_128.csv', 'rb'), delimiter=',', dtype='float')
+libtiff_train_repre_nist = np.loadtxt(open(working_dir + 'libtiff_train_rep_128.csv', 'rb'), delimiter=',', dtype='float')
+libtiff_test_repre_nist= np.loadtxt(open(working_dir + 'libtiff_test_rep_128.csv', 'rb'), delimiter=',', dtype='float')
 
-libtiff_train_label = np.loadtxt(open(working_dir + 'libtiff_train_nist_label.csv', 'rb'), delimiter=',', dtype='int')
-libtiff_test_label = np.loadtxt(open(working_dir + 'libtiff_test_nist_label.csv', 'rb'), delimiter=',', dtype='int')
+libtiff_train_label = np.loadtxt(open(working_dir + 'libtiff_train_rep_label.csv', 'rb'), delimiter=',', dtype='int')
+libtiff_test_label = np.loadtxt(open(working_dir + 'libtiff_test_rep_label.csv', 'rb'), delimiter=',', dtype='int')
 
 train_id = np.loadtxt(open(working_dir + 'libtiff_train_id.csv', 'rb'), delimiter=',', dtype='str').tolist()
 test_id = np.loadtxt(open(working_dir + 'libtiff_test_id.csv', 'rb'), delimiter=',', dtype='str').tolist()
@@ -74,9 +74,8 @@ def invokeRandomForest(train_set_x, train_set_y, test_set_x, test_set_y):
     train_set_y = np.ndarray.flatten(np.asarray(train_set_y))
     test_set_y = np.ndarray.flatten(np.asarray(test_set_y))
     
-        #construct the grid search classifier, 10-fold Cross Validation
     #clf = GridSearchCV(RandomForestClassifier(), param_grid=param_grid, n_jobs=-1)
-    clf = RandomForestClassifier(bootstrap=False, class_weight={0:1, 1:4},
+    clf = RandomForestClassifier(bootstrap=True, class_weight='balanced', #class_weight={0:1, 1:4},
             criterion='entropy', max_depth=40, max_features='auto',
             max_leaf_nodes=None, min_impurity_decrease=0.0,
             min_impurity_split=None, min_samples_leaf=3,
