@@ -11,6 +11,7 @@ Train a Bi-LSTM model.
 import time
 import datetime
 import os
+#os.environ["CUDA_VISIBLE_DEVICES"]="0" # Use the GTX Titan XP only.
 import numpy as np
 import pickle
 import pandas as pd
@@ -240,6 +241,11 @@ print (train_set_x.shape, train_set_y.shape, validation_set_x.shape, validation_
 
 print (np.count_nonzero(train_set_y), np.count_nonzero(validation_set_y))
 
+# Dealing with data imbalance issue.
+class_weights = class_weight.compute_class_weight('balanced',
+                                                 np.unique(train_set_y),
+                                                 train_set_y)
+
 # -----------------------------------
 # 4. Preparing the Embedding layer
 
@@ -334,7 +340,7 @@ def plot_history(network_history):
 
 if __name__ == '__main__':
     
-    os.environ["CUDA_VISIBLE_DEVICES"]="0" #0: Use Titan XP only.
+    #os.environ["CUDA_VISIBLE_DEVICES"]="0" #0: Use Titan XP only.
 
     model, train_history = train(train_set_x, train_set_y, validation_set_x, validation_set_y, 'BiLSTM_MA_part_of_ffmpeg_validation_class_weight_1')
     plot_history(train_history)
