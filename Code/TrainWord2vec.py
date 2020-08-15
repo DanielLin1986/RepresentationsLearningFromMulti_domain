@@ -81,10 +81,10 @@ with open('tokenizer.pickle', 'wb') as handle:
 # 3. Train a Vocabulary with Word2Vec -- using the function provided by gensim
 
 #w2vModel = Word2Vec(train_token_list, workers = 12, size=100) # With default settings, the embedding dimension is 100 and using, (sg=0), CBOW is used.  
-w2vModel = Word2Vec(train_token_list, workers = 12, size=100, sg=1)
+w2vModel = Word2Vec(train_token_list, workers = 12, size=100)
 
 print ("----------------------------------------")
 print ("The trained word2vec model: ")
 print (w2vModel)
 
-w2vModel.wv.save_word2vec_format(working_dir + "6_projects_w2v_model_skipgram.txt", binary=False)
+w2vModel.wv.save_word2vec_format(working_dir + "w2v_model.txt", binary=False)
