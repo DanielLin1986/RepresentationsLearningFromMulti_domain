@@ -15,6 +15,7 @@ import pandas as pd
 
 from gensim.models import Word2Vec
 from keras.preprocessing.text import Tokenizer
+from LoadCFilesAsText import getCFilesFromText
 
 script_start_time = time.time()
 
@@ -53,7 +54,8 @@ def ProcessList(list_to_process):
     return token_list
 
 
-train_token_list = getData(file_path)
+#train_token_list = getData(file_path)
+train_token_list, train_token_list_id = getCFilesFromText(file_path)
 
 train_token_list = ProcessList(train_token_list)
 
